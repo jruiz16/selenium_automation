@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.injuanfg'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.24.0'
+    testImplementation group: 'org.hamcrest', name: 'hamcrest', version: '3.0'
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.26.3'
+
+}
+
+test {
+    useJUnitPlatform()
+}
