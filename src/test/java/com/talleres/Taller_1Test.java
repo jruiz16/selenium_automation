@@ -11,6 +11,11 @@ import java.util.List;
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import java.time.Duration;
+import org.openqa.selenium.JavascriptExecutor;
+
 
 //Hola
 
@@ -20,8 +25,7 @@ public class Taller_1Test {
     public void reto1() {
 
         // ARRANGE
-        System.setProperty("webdriver.chrome.driver",
-                "D:\\chromedriver-win64\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver-win64\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
 
@@ -37,26 +41,18 @@ public class Taller_1Test {
 
         String firstName = "Juan Prueba";
         String lastName = "Ruiz Prueba";
-        String email = "juanprueba1@gmail.com";
+        String email = "juanprueba2@gmail.com";
         String password = "ahsfjkahsiuhriyw";
         String birthDate = "05/31/1970";
 
-        WebElement socialTitleInput = driver
-                .findElement(By.xpath("//SPAN[@class='custom-radio']//input[@id='field-id_gender-1']"));
-        WebElement firstNameInput = driver
-                .findElement(By.xpath("//form[@class='js-customer-form']//input[@id='field-firstname']"));
-        WebElement lastNameInput = driver
-                .findElement(By.xpath("//form[@class='js-customer-form']//input[@id='field-lastname']"));
-        WebElement emailInput = driver
-                .findElement(By.xpath("//form[@class='js-customer-form']//input[@id='field-email']"));
-        WebElement passwordInput = driver
-                .findElement(By.xpath("//form[@class='js-customer-form']//input[@id='field-password']"));
-        WebElement birthDateInput = driver
-                .findElement(By.xpath("//form[@class='js-customer-form']//input[@id='field-birthday']"));
-        WebElement termsInput = driver
-                .findElement(By.xpath("//form[@class='js-customer-form']//input[@name='psgdpr']"));
-        WebElement saveButtonInput = driver
-                .findElement(By.xpath("//form[@class='js-customer-form']//button[@data-link-action='save-customer']"));
+        WebElement socialTitleInput = driver.findElement(By.xpath("//SPAN[@class='custom-radio']//input[@id='field-id_gender-1']"));
+        WebElement firstNameInput = driver.findElement(By.xpath("//form[@class='js-customer-form']//input[@id='field-firstname']"));
+        WebElement lastNameInput = driver.findElement(By.xpath("//form[@class='js-customer-form']//input[@id='field-lastname']"));
+        WebElement emailInput = driver.findElement(By.xpath("//form[@class='js-customer-form']//input[@id='field-email']"));
+        WebElement passwordInput = driver.findElement(By.xpath("//form[@class='js-customer-form']//input[@id='field-password']"));
+        WebElement birthDateInput = driver.findElement(By.xpath("//form[@class='js-customer-form']//input[@id='field-birthday']"));
+        WebElement termsInput = driver.findElement(By.xpath("//form[@class='js-customer-form']//input[@name='psgdpr']"));
+        WebElement saveButtonInput = driver.findElement(By.xpath("//form[@class='js-customer-form']//button[@data-link-action='save-customer']"));
 
         socialTitleInput.click();
         firstNameInput.sendKeys(firstName);
@@ -77,8 +73,7 @@ public class Taller_1Test {
     public void reto2() {
 
         // ARRANGE
-        System.setProperty("webdriver.chrome.driver",
-                "D:\\chromedriver-win64\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver-win64\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
 
@@ -107,8 +102,7 @@ public class Taller_1Test {
                 int randomIndex = random.nextInt(products.size());
                 WebElement product = products.get(randomIndex);
 
-                WebElement priceElement = product
-                        .findElement(By.xpath(".//div[@class='pricebar']//div[@class='inventory_item_price']"));
+                WebElement priceElement = product.findElement(By.xpath(".//div[@class='pricebar']//div[@class='inventory_item_price']"));
                 String priceText = priceElement.getText().replace("$", "");
                 double price = Double.parseDouble(priceText);
 
@@ -116,8 +110,7 @@ public class Taller_1Test {
 
                 System.out.println("Producto seleccionado: $" + price);
 
-                WebElement addToCartButton = product
-                        .findElement(By.xpath(".//div[@class='pricebar']//button[contains(@class,'btn_inventory')]"));
+                WebElement addToCartButton = product.findElement(By.xpath(".//div[@class='pricebar']//button[contains(@class,'btn_inventory')]"));
                 addToCartButton.click();
 
                 products.remove(randomIndex);
@@ -126,12 +119,10 @@ public class Taller_1Test {
             System.out.println("La suma total de los productos seleccionados es: $" +
                     totalSum);
 
-            WebElement cartButton = driver
-                    .findElement(By.xpath(".//div[@data-test='header-container']//a[@data-test='shopping-cart-link']"));
+            WebElement cartButton = driver.findElement(By.xpath(".//div[@data-test='header-container']//a[@data-test='shopping-cart-link']"));
             cartButton.click();
 
-            WebElement checkoutButton = driver
-                    .findElement(By.xpath(".//div[@class='cart_footer']//button[@data-test='checkout']"));
+            WebElement checkoutButton = driver.findElement(By.xpath(".//div[@class='cart_footer']//button[@data-test='checkout']"));
             checkoutButton.click();
 
             WebElement firstNameInput = driver.findElement(By.xpath(".//form//input[@data-test='firstName']"));
@@ -144,12 +135,9 @@ public class Taller_1Test {
             postalCodeInput.sendKeys("05001");
             continueButton.click();
 
-            WebElement subTotalPrice = driver
-                    .findElement(By.xpath(".//div[@class='summary_info']//div[@data-test='subtotal-label']"));
-            WebElement taxPrice = driver
-                    .findElement(By.xpath(".//div[@class='summary_info']//div[@data-test='tax-label']"));
-            WebElement totalPrice = driver
-                    .findElement(By.xpath(".//div[@class='summary_info']//div[@data-test='total-label']"));
+            WebElement subTotalPrice = driver.findElement(By.xpath(".//div[@class='summary_info']//div[@data-test='subtotal-label']"));
+            WebElement taxPrice = driver.findElement(By.xpath(".//div[@class='summary_info']//div[@data-test='tax-label']"));
+            WebElement totalPrice = driver.findElement(By.xpath(".//div[@class='summary_info']//div[@data-test='total-label']"));
 
             String textSubTotalPrice = subTotalPrice.getText();
             String textTaxPrice = taxPrice.getText();
@@ -179,36 +167,44 @@ public class Taller_1Test {
 
     @Test
     public void retoIframe() {
-        System.setProperty("webdriver.chrome.driver", "D:\\chromedriver-win64\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver-win64\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
 
         driver.get("https://automationtesting.co.uk/iframes.html");
 
-        WebElement sideBarToggle = driver
-                .findElement(By.xpath("//iframe[@src='index.html']//div[@id='sidebar']/a[@class='toggle']"));
+        // Cambiar al iframe
+        WebElement iframe = driver.findElement(By.xpath("//iframe[@src='index.html']"));
+        driver.switchTo().frame(iframe);
 
+        // Esperar hasta que el botón de toggle esté interactuable
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement sideBarToggle = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='sidebar']//a[@class='toggle']")));
         sideBarToggle.click();
 
-        WebElement listText = driver
-                .findElement(By.xpath("//iframe[@src='index.html']//div[@id='sidebar']//ul/li/a[text()='Accordion']"));
+        // Hacer clic en el enlace 'Accordion' del menú
+        WebElement listText = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='sidebar']//ul/li/a[text()='Accordion']")));
         listText.click();
 
-        WebElement bigSideBarToggle = driver.findElement(By.xpath("//div[@id='sidebar']//a[@class='toggle']"));
+        // Cambiar al contenido principal
+        driver.switchTo().defaultContent();
 
-        bigSideBarToggle.click();
+        // Scroll y clic en el toggle grande de la página principal
+        WebElement bigSideBarToggle = driver.findElement(By.xpath("//div[@id='sidebar']//a[@class='toggle']"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", bigSideBarToggle);
+        wait.until(ExpectedConditions.elementToBeClickable(bigSideBarToggle)).click();
+
     }
 
     @Test
     public void retoAlert() {
-        System.setProperty("webdriver.chrome.driver",
-                "D:\\chromedriver-win64\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver-win64\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
 
         driver.get("https://automationtesting.co.uk/popups.html");
 
-        WebElement buttonTrigger = driver.findElement(By.xpath("//div[@class='row']//button[text()='TriggerAlert']"));
+        WebElement buttonTrigger = driver.findElement(By.xpath("//div[@class='row']//button[text()='Trigger Alert']"));
 
         buttonTrigger.click();
 
