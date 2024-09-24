@@ -41,7 +41,7 @@ public class Taller_1Test {
 
         String firstName = "Juan Prueba";
         String lastName = "Ruiz Prueba";
-        String email = "juanprueba2@gmail.com";
+        String email = "juanprueba4@gmail.com";
         String password = "ahsfjkahsiuhriyw";
         String birthDate = "05/31/1970";
 
