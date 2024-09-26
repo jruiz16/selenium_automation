@@ -211,4 +211,38 @@ public class Taller_1Test {
         Alert alert = driver.switchTo().alert();
         alert.accept();
     }
+    
+    @Test
+    public void retoTab() {
+
+        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver-win64\\chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+
+        driver.get("https://automationtesting.co.uk/browserTabs.html");
+
+        WebElement openTabButton = driver.findElement(By.xpath("//div[@class='col-4 col-12-medium']//input[@value='Open Tab']"));
+        openTabButton.click();
+
+        String originalWindow = driver.getWindowHandle();
+
+        Set<String> allWindows = driver.getWindowHandles();
+        while (allWindows.size() == 1) {
+            allWindows = driver.getWindowHandles();
+        }
+
+        for (String windowHandle : allWindows) {
+            if (!windowHandle.equals(originalWindow)) {
+                driver.switchTo().window(windowHandle);
+                break;
+            }
+        }
+
+        WebElement searchInput = driver.findElement(By.xpath("//div[@id='searchform']//input[@name='q']"));
+        searchInput.sendKeys("Cualquier cosa" + Keys.ENTER);
+
+        driver.quit();
+    }
+
+    
 }
