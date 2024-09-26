@@ -239,7 +239,7 @@ public class Taller_1Test {
         }
 
         WebElement searchInput = driver.findElement(By.xpath("//div[@id='searchform']//input[@name='q']"));
-        searchInput.sendKeys("Cualquier cosa" + Keys.ENTER);
+        searchInput.sendKeys("google" + Keys.ENTER);
 
         driver.quit();
     }
